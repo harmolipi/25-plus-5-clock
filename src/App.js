@@ -1,4 +1,4 @@
-function App() {
+const App = () => {
   return (
     <div className="App container mx-auto my-9">
       <h1 className="text-5xl font-bold text-center text-slate-600">25plus5</h1>
@@ -123,6 +123,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
