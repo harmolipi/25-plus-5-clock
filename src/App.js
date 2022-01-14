@@ -8,6 +8,7 @@ const App = () => {
         <a
           href="https://en.wikipedia.org/wiki/Pomodoro_Technique"
           target="_blank"
+          rel="noreferrer"
           className="text-red-700 underline"
         >
           Pomodoro Technique
