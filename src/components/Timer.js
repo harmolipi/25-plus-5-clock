@@ -1,4 +1,4 @@
-const Timer = () => {
+const Timer = ({ time }) => {
   return (
     <div
       id="timer"
@@ -11,7 +11,7 @@ const Timer = () => {
         id="time-left"
         className="text-center text-5xl font-bold font-mono py-8"
       >
-        25:00
+        {time}
       </p>
       <div
         id="timer-controls"

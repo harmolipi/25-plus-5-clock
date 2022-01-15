@@ -6,6 +6,7 @@ import Timer from './components/Timer';
 const App = () => {
   const [workTime, setWorkTime] = useState(25);
   const [breakTime, setBreakTime] = useState(5);
+  const [currentCountdown, setCurrentCountdown] = useState(workTime);
 
   const decrement = (settingTime, isWork) => {
     if (settingTime > 1) {
@@ -47,7 +48,7 @@ const App = () => {
           decrement={decrement}
         />
       </div>
-      <Timer />
+      <Timer time={currentCountdown} />
     </div>
   );
 };
