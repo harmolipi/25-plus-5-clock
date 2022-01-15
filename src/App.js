@@ -1,3 +1,5 @@
+import TimeSet from './components/TimeSet';
+
 const App = () => {
   return (
     <div className="App container mx-auto my-9">
@@ -19,70 +21,8 @@ const App = () => {
         id="time-selectors"
         className="flex flex-row flex-wrap justify-between w-7/12 mx-auto my-12"
       >
-        <div id="work" className="w-5/12 border-2 border-solid rounded">
-          <h2 id="session-label" className="text-center text-xl">
-            Work
-          </h2>
-          <div
-            id="work-selector"
-            className="mx-auto my-2 flex flex-row justify-between divide-x"
-          >
-            <div className="px-2 basis-full">
-              <div
-                id="session-decrement"
-                className="text-center py-4 w-full hover:bg-gray-200 rounded"
-              >
-                v
-              </div>
-            </div>
-            <span
-              id="session-length"
-              className="font-mono basis-full text-center text-4xl px-2 py-3"
-            >
-              25
-            </span>
-            <div className="px-2 basis-full">
-              <div
-                id="session-decrement"
-                className="text-center py-4 w-full hover:bg-gray-200 rounded"
-              >
-                ^
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="break" className="w-5/12 border-2 border-solid rounded">
-          <h2 id="break-label" className="text-center text-xl">
-            Break
-          </h2>
-          <div
-            id="break-selector"
-            className="mx-auto my-2 flex flex-row justify-between divide-x"
-          >
-            <div className="px-2 basis-full">
-              <div
-                id="session-decrement"
-                className="text-center py-4 w-full hover:bg-gray-200 rounded"
-              >
-                v
-              </div>
-            </div>
-            <span
-              id="break-length"
-              className="font-mono basis-full text-center text-4xl px-2 py-3"
-            >
-              5
-            </span>
-            <div className="px-2 basis-full">
-              <div
-                id="session-decrement"
-                className="text-center py-4 w-full hover:bg-gray-200 rounded"
-              >
-                ^
-              </div>
-            </div>
-          </div>
-        </div>
+        <TimeSet isWork={true} />
+        <TimeSet isWork={false} />
       </div>
       <div
         id="timer"
