@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-const TimeSet = ({ isWork }) => {
+const TimeSet = ({ isWork, time, increment, decrement }) => {
   const workSettings = {
     title: 'Work',
     labelId: 'session-label',
@@ -24,19 +22,6 @@ const TimeSet = ({ isWork }) => {
   };
 
   const selectorSettings = isWork ? workSettings : breakSettings;
-  const [time, setTime] = useState(selectorSettings.defaultLength);
-
-  const decrement = () => {
-    if (time > 1) {
-      setTime((prevTime) => prevTime - 1);
-    }
-  };
-
-  const increment = () => {
-    if (time < 60) {
-      setTime((prevTime) => prevTime + 1);
-    }
-  };
 
   return (
     <div
@@ -54,7 +39,7 @@ const TimeSet = ({ isWork }) => {
           <button
             id={selectorSettings.decrementId}
             className="text-center py-4 w-full hover:bg-gray-200 rounded"
-            onClick={decrement}
+            onClick={() => decrement(time, isWork)}
           >
             v
           </button>
@@ -69,7 +54,7 @@ const TimeSet = ({ isWork }) => {
           <button
             id={selectorSettings.incrementId}
             className="text-center py-4 w-full hover:bg-gray-200 rounded"
-            onClick={increment}
+            onClick={() => increment(time, isWork)}
           >
             ^
           </button>
