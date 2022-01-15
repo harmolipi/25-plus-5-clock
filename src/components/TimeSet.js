@@ -26,6 +26,18 @@ const TimeSet = ({ isWork }) => {
   const selectorSettings = isWork ? workSettings : breakSettings;
   const [time, setTime] = useState(selectorSettings.defaultLength);
 
+  const decrement = () => {
+    if (time > 1) {
+      setTime((prevTime) => prevTime - 1);
+    }
+  };
+
+  const increment = () => {
+    if (time < 60) {
+      setTime((prevTime) => prevTime + 1);
+    }
+  };
+
   return (
     <div
       id={selectorSettings.containerId}
@@ -39,26 +51,28 @@ const TimeSet = ({ isWork }) => {
         className="mx-auto my-2 flex flex-row justify-between divide-x"
       >
         <div className="px-2 basis-full">
-          <div
+          <button
             id={selectorSettings.decrementId}
             className="text-center py-4 w-full hover:bg-gray-200 rounded"
+            onClick={decrement}
           >
             v
-          </div>
+          </button>
         </div>
         <span
           id={selectorSettings.lengthId}
           className="font-mono basis-full text-center text-4xl px-2 py-3"
         >
-          {selectorSettings.defaultLength}
+          {time}
         </span>
         <div className="px-2 basis-full">
-          <div
+          <button
             id={selectorSettings.incrementId}
             className="text-center py-4 w-full hover:bg-gray-200 rounded"
+            onClick={increment}
           >
             ^
-          </div>
+          </button>
         </div>
       </div>
     </div>
