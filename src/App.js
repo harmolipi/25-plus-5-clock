@@ -4,29 +4,29 @@ import TimeSet from './components/TimeSet';
 import Timer from './components/Timer';
 
 const App = () => {
-  const [workTime, setWorkTime] = useState(25);
-  const [breakTime, setBreakTime] = useState(5);
+  const [workTime, setWorkTime] = useState(1500);
+  const [breakTime, setBreakTime] = useState(300);
   const [currentCountdown, setCurrentCountdown] = useState(workTime);
   const [timerMode, setTimerMode] = useState('Work');
   const [active, setActive] = useState(false);
   const [intervalToSet, setIntervalToSet] = useState(null);
 
   const decrement = (settingTime, isWork) => {
-    if (settingTime > 1) {
+    if (settingTime > 60) {
       if (isWork) {
-        setWorkTime((prevTime) => prevTime - 1);
+        setWorkTime((prevTime) => prevTime - 60);
       } else {
-        setBreakTime((prevTime) => prevTime - 1);
+        setBreakTime((prevTime) => prevTime - 60);
       }
     }
   };
 
   const increment = (settingTime, isWork) => {
-    if (settingTime < 60) {
+    if (settingTime < 3600) {
       if (isWork) {
-        setWorkTime((prevTime) => prevTime + 1);
+        setWorkTime((prevTime) => prevTime + 60);
       } else {
-        setBreakTime((prevTime) => prevTime + 1);
+        setBreakTime((prevTime) => prevTime + 60);
       }
     }
   };
@@ -56,9 +56,27 @@ const App = () => {
     }
   }, [active]);
 
+  const reset = () => {
+    const audio = document.querySelector('#beep');
+    audio.pause();
+    audio.currentTime = 0;
+    setActive(false);
+    setWorkTime(1500);
+    setBreakTime(300);
+    setCurrentCountdown(workTime);
+    setTimerMode('Work');
+  };
+
+  const playSound = () => {
+    console.log('Playing sound');
+    const audio = document.querySelector('#beep');
+    audio.play();
+  };
+
   // Reset the timer when the current countdown reaches 0
   useEffect(() => {
-    if (currentCountdown < 0) {
+    if (currentCountdown <= 0) {
+      playSound();
       changeMode();
     }
   }, [currentCountdown]);
@@ -105,6 +123,7 @@ const App = () => {
         changeMode={changeMode}
         active={active}
         setActive={setActive}
+        reset={reset}
       />
     </div>
   );

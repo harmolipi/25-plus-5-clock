@@ -7,7 +7,7 @@ const TimeSet = ({ isWork, time, increment, decrement }) => {
     decrementId: 'session-decrement',
     incrementId: 'session-increment',
     lengthId: 'session-length',
-    defaultLength: 25,
+    defaultLength: 1500,
   };
 
   const breakSettings = {
@@ -18,7 +18,7 @@ const TimeSet = ({ isWork, time, increment, decrement }) => {
     decrementId: 'break-decrement',
     incrementId: 'break-increment',
     lengthId: 'break-length',
-    defaultLength: 5,
+    defaultLength: 300,
   };
 
   const selectorSettings = isWork ? workSettings : breakSettings;
@@ -48,7 +48,7 @@ const TimeSet = ({ isWork, time, increment, decrement }) => {
           id={selectorSettings.lengthId}
           className="font-mono basis-full text-center text-4xl px-2 py-3"
         >
-          {time}
+          {time / 60}
         </span>
         <div className="px-2 basis-full">
           <button

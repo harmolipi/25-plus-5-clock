@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const Timer = ({ time, mode, changeMode, active, setActive }) => {
+const Timer = ({ time, mode, changeMode, active, setActive, reset }) => {
   return (
     <div
       id="timer"
@@ -9,12 +9,14 @@ const Timer = ({ time, mode, changeMode, active, setActive }) => {
       <h2 id="timer-label" className="text-center pb-2 text-3xl text-blue-500">
         {mode}
       </h2>
-      <p
+      <div
         id="time-left"
         className="text-center text-5xl font-bold font-mono py-8"
       >
-        {time}
-      </p>
+        {`${time / 60 < 10 ? '0' : ''}${Math.floor(time / 60)}:${
+          time % 60 < 10 ? '0' : ''
+        }${time % 60}`}
+      </div>
       <div
         id="timer-controls"
         className="mx-auto flex flex-row justify-around pt-2 divide-x"
@@ -32,11 +34,17 @@ const Timer = ({ time, mode, changeMode, active, setActive }) => {
           <button
             id="reset"
             className="w-full py-2 hover:bg-gray-200 text-gray-800 font-bold rounded"
+            onClick={reset}
           >
             Reset
           </button>
         </div>
       </div>
+      <audio
+        id="beep"
+        preload="auto"
+        src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+      ></audio>
     </div>
   );
 };
