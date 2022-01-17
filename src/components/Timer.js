@@ -1,11 +1,13 @@
-const Timer = ({ time }) => {
+import { useEffect } from 'react';
+
+const Timer = ({ time, mode, changeMode, active, setActive }) => {
   return (
     <div
       id="timer"
       className="mx-auto p-2 w-2/6 border-2 border-solid rounded divide-y"
     >
       <h2 id="timer-label" className="text-center pb-2 text-3xl text-blue-500">
-        Work
+        {mode}
       </h2>
       <p
         id="time-left"
@@ -21,8 +23,9 @@ const Timer = ({ time }) => {
           <button
             id="start_stop"
             className="w-full py-2 hover:bg-gray-200 text-gray-800 font-bold rounded"
+            onClick={() => setActive((prevActive) => !prevActive)}
           >
-            Start
+            {active ? 'Pause' : 'Start'}
           </button>
         </div>
         <div className="w-full px-2">
