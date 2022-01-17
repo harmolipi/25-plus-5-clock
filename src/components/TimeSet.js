@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
 const TimeSet = ({ isWork, time, increment, decrement }) => {
   const workSettings = {
     title: 'Work',
@@ -38,10 +41,10 @@ const TimeSet = ({ isWork, time, increment, decrement }) => {
         <div className="px-2 basis-full">
           <button
             id={selectorSettings.decrementId}
-            className="text-center py-4 w-full hover:bg-gray-200 rounded"
+            className="text-center text-2xl py-4 w-full hover:bg-gray-200 rounded"
             onClick={() => decrement(time, isWork)}
           >
-            v
+            <FontAwesomeIcon icon={faArrowDown} />
           </button>
         </div>
         <span
@@ -53,10 +56,10 @@ const TimeSet = ({ isWork, time, increment, decrement }) => {
         <div className="px-2 basis-full">
           <button
             id={selectorSettings.incrementId}
-            className="text-center py-4 w-full hover:bg-gray-200 rounded"
+            className="text-center text-2xl py-4 w-full hover:bg-gray-200 rounded"
             onClick={() => increment(time, isWork)}
           >
-            ^
+            <FontAwesomeIcon icon={faArrowUp} />
           </button>
         </div>
       </div>
