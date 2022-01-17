@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 const Timer = ({ time, mode, changeMode, active, setActive, reset }) => {
   return (
     <div
